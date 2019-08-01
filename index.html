@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Sudoku Solver - Genetic Algorithm</title>
+    <link rel="stylesheet" href="StyleSheet.css" />
+	<!-- Created By Itay Malka-->
+	<script src="jquery-3.3.1.slim.js"></script>
+	<script type="text/javascript" src="JSModules.js"></script> 
+</head>
+<body style="background-color: rgb(243, 243, 243); width: 100%">
+<div id="pageContainer">
+	<div id="topContainer">Sudoku Solver Using Genetic Algorithm</div>
+	<div class="row">
+			<div id="leftContentContainer">
+<!--Sudoku board-->
+<div class="table-container">
+<table  id="sudokuTable" >
+		<tr class="row">
+			<td class="white-cell border-bottom border-right" id="cell1"></td>
+			<td class="white-cell border-bottom border-right" id="cell2"></td>
+			<td class="white-cell border-bottom" id="cell3"></td>
+			<td class="blue-cell border-bottom border-left-bold border-right" id="cell4"></td>
+			<td class="blue-cell border-bottom border-right" id="cell5"></td>
+			<td class="blue-cell border-bottom" id="cell6"></td>
+			<!--row--></tr>
+			<tr class="row">
+				<td class="white-cell  border-right" id="cell7"></td>
+				<td class="white-cell  border-right" id="cell8"></td>
+				<td class="white-cell " id="cell9"></td>
+				<td class="blue-cell  border-left-bold border-right" id="cell10"></td>
+				<td class="blue-cell  border-right" id="cell11"></td>
+				<td class="blue-cell " id="cell12"></td>
+				<!--row--></tr>
+			<tr class="row">
+				<td class="blue-cell border-top-bold border-bottom border-right" id="cell13"></td>
+				<td class="blue-cell border-top-bold border-bottom border-right" id="cell14"></td>
+				<td class="blue-cell border-top-bold border-bottom" id="cell15"></td>
+				<td class="white-cell border-top-bold border-bottom border-left-bold border-right" id="cell16"></td>
+				<td class="white-cell border-top-bold border-bottom border-right" id="cell17"></td>
+				<td class="white-cell border-top-bold border-bottom" id="cell18"></td>
+				<!--row--></tr>
+			<tr class="row">
+				<td class="blue-cell border-right" id="cell19"></td>
+				<td class="blue-cell border-right" id="cell20"></td>
+				<td class="blue-cell" id="cell21"></td>
+				<td class="white-cell border-left-bold border-right" id="cell22"></td>
+				<td class="white-cell border-right" id="cell23"></td>
+				<td class="white-cell" id="cell24"></td>
+				<!--row--></tr>
+			<tr class="row">
+				<td class="white-cell border-top-bold border-bottom border-right" id="cell25"></td>
+				<td class="white-cell border-top-bold border-bottom border-right" id="cell26"></td>
+				<td class="white-cell border-top-bold border-bottom" id="cell27"></td>
+				<td class="blue-cell border-top-bold border-left-bold border-bottom border-right" id="cell28"></td>
+				<td class="blue-cell border-top-bold border-bottom border-right" id="cell29"></td>
+				<td class="blue-cell border-top-bold border-bottom" id="cell30"></td>
+				<!--row--></tr>
+				<tr class="row">
+					<td class="white-cell border-bottom border-right" id="cell31"></td>
+					<td class="white-cell border-bottom border-right" id="cell32"></td>
+					<td class="white-cell border-bottom" id="cell33"></td>
+					<td class="blue-cell border-bottom border-left-bold border-right" id="cell34"></td>
+					<td class="blue-cell border-bottom border-right" id="cell35"></td>
+					<td class="blue-cell border-bottom" id="cell36"></td>
+					<!--row--></tr>
+</table>
+</div>
+<!-- Sudoku board-->
+<div class="game-properties">
+	<div class="game-level">
+	Choose Game level:
+		<select id="gameLevel">
+				<option value="1">Easy</option>
+				<option value="2">Medium</option>
+				<option value="3">Hard</option>
+			  </select> </div>
+	<button onclick="NewGame()" style="width: 130px;">New Game!</button>
+	<button onclick="ResetGame()" style="width: 130px;">Reset Game</button>
+</div>
+			</div>
+				<div id="rightContentContainer">
+					<div style="margin: 15px 4px 4px 10px;">
+						Population Size:&nbsp;&nbsp;&nbsp;&nbsp;
+						<input type="range" min="50" max="150" step="1" class="slider" id="populationSize" oninput="populationSizeOut.value = populationSize.value">
+						<output id="populationSizeOut"></output>
+					</div>	
+					<div style="margin: 10px;">
+							Crossover Chance:
+							<input type="range" min="0.0" max="1.0" step=".01" class="slider" id="crossoverChance" oninput="crossoverChanceOut.value = crossoverChance.value">
+							<output id="crossoverChanceOut"></output>
+						</div>
+						<div style="margin: 10px;">
+								Mutation Chance:&nbsp;
+								<input type="range" min="0.0" max="1.0" step=".01" class="slider" id="mutationChance" oninput="mutationChanceOut.value = mutationChance.value">
+								<output id="mutationChanceOut"></output>
+							</div>
+
+							<div style="margin: 10px;">
+								Elites Size:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<input type="range" min="0" max="50" step="1" class="slider" id="elitesSize" oninput="elitesSizeOut.value = elitesSize.value">
+								<output id="elitesSizeOut"></output>
+							</div>
+
+							<div style="margin: 10px;">
+								Max Generations:&nbsp;
+								<input type="range" min="100" max="500" step="1" class="slider" id="maxGenerations" oninput="maxGenerationsOut.value = maxGenerations.value">
+								<output id="maxGenerationsOut"></output>
+							</div>
+							<div style="margin: 30px 10px 10px 10px;">	
+								<button onclick="Solve()" style="width: 160px">Solve Game!</button>
+								<button onclick="Default()">Default</button></div>	
+								<div id="scoreBoard" style="margin: 15px 4px 4px 10px; visibility: hidden">
+								<div>Number Of Generations To Solution: <span id="currNumberOfGenerations"></span></div>	
+								<div>Best Fitness: <span id="currBestFitness"></span></div>
+								<div>Maximum Generations: <span id="totalGenerations"></span></div>
+							</div>
+				</div>
+
+		
+	</div>
+</div>
+	
+</body>
+</html>

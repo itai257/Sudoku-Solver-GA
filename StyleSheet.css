@@ -1,0 +1,234 @@
+
+body {
+position: relative;
+width: 100%;
+height: 100%;
+font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+html{
+	height: 100%;
+}
+
+
+#pageContainer{
+	margin: 0px 30px 0px 30px;
+	text-align: center;
+}
+
+#topContainer{
+	border: 1px #6E6E6E solid;
+    overflow: hidden;
+    background-color: rgb(255, 255, 255);
+    padding-top: 20px;
+	margin:  7px 10px 3px 10px;
+	width: 1125px;
+	height: 50px;
+	display: inline-block;
+	text-align: center;
+	font-size: 25px;
+	font-weight: bold;
+	color: rgb(107, 67, 67);
+	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+#leftContentContainer {
+    border: 1px #6E6E6E solid;
+    background-color: rgb(255, 255, 255);
+	padding: 0px;
+	overflow: hidden;
+	margin:  7px 10px 3px 10px;
+	width: 750px;
+	height: 450px;
+	display: inline-block;
+}
+
+#rightContentContainer{
+	border: 1px #6E6E6E solid;
+    overflow: hidden;
+    background-color: rgb(255, 255, 255);
+    padding: 0px;
+	margin:  7px 10px 3px 10px;
+	width: 350px;
+	height: 450px;
+	display: inline-block;
+	text-align: left;
+}
+
+#sudokuTable{
+	width: 420px;
+	height: 300px;
+	margin: 14px;
+	border-spacing: 0px;
+	border: 3px solid black;
+}
+
+.table-container{
+	float: left;
+}
+.game-level{
+	margin-bottom: 70px;
+}
+.game-properties{
+	display: inline-block;
+	margin: 14px;
+	height: 300px;
+	padding-top: 50px;
+}
+
+.white-cell{
+background: rgb(248, 248, 248);
+}
+
+.blue-cell{
+	background: rgb(165, 175, 233);
+	}
+
+.border-left-bold{
+	border-left: 4px solid black;
+
+}
+
+.border-top-bold{
+	border-top: 4px solid black;
+
+}
+
+.border-right{
+	border-right: 1px solid rgb(112, 112, 112);
+}
+
+.border-bottom{
+	border-bottom: 1px solid rgb(112, 112, 112);
+}
+
+td{
+	width: 70px;
+}
+
+button {
+	background-color: rgb(165, 175, 233);
+	border: none;
+	color: rgb(53, 53, 53);
+	padding: 15px 15px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+}
+
+select{
+	margin: 5px;
+	width: 70px;
+}
+td{
+	font-size: 20px;
+	font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+	text-align: center;
+	color: rgb(53, 53, 53);
+}
+
+
+
+.slider {
+	-webkit-appearance: none;
+	width: 40%;
+	height: 5px;
+	background: #d3d3d3;
+	border-radius: 3px;
+	outline: none;
+	opacity: 0.7;
+	-webkit-transition: .2s;
+	transition: opacity .2s;
+  }
+  
+  .slider:hover {
+	opacity: 1;
+  }
+  
+  .slider::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	appearance: none;
+	width: 14px;
+	border-radius: 50%;
+	height: 14px;
+	background: rgb(165, 175, 233);
+	cursor: pointer;
+  }
+  
+  .slider::-moz-range-thumb {
+	width: 14px;
+	height: 14px;
+	border-radius: 50%;
+	background: rgb(165, 175, 233);
+	cursor: pointer;
+  }
+
+  /* Radio Button */
+
+  .container {
+	display: block;
+	position: relative;
+	padding-left: 35px;
+	margin-bottom: 12px;
+	cursor: pointer;
+	font-size: 17px;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+  }
+  
+  /* Hide the browser's default checkbox */
+  .container input {
+	position: absolute;
+	opacity: 0;
+	cursor: pointer;
+	height: 0;
+	width: 0;
+  }
+  
+  /* Create a custom checkbox */
+  .checkmark {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 20px;
+	width: 20px;
+	background-color: #eee;
+  }
+  
+  /* On mouse-over, add a grey background color */
+  .container:hover input ~ .checkmark {
+	background-color: #ccc;
+  }
+  
+  /* When the checkbox is checked, add a blue background */
+  .container input:checked ~ .checkmark {
+	background-color: #370b69;
+  }
+  
+  /* Create the checkmark/indicator (hidden when not checked) */
+  .checkmark:after {
+	content: "";
+	position: absolute;
+	display: none;
+  }
+  
+  /* Show the checkmark when checked */
+  .container input:checked ~ .checkmark:after {
+	display: block;
+  }
+  
+  /* Style the checkmark/indicator */
+  .container .checkmark:after {
+	left: 7px;
+	top: 5px;
+	width: 3px;
+	height: 7px;
+	border: solid white;
+	border-width: 0 3px 3px 0;
+	-webkit-transform: rotate(45deg);
+	-ms-transform: rotate(45deg);
+	transform: rotate(45deg);
+  }
